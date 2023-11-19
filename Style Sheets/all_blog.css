@@ -487,6 +487,8 @@ body.index .header__link {
         height: 100%;
         width: 100%;
         opacity: 1;
+        overflow:auto;
+        background-color: var(--background)
     }
 }
 
