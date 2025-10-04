@@ -437,16 +437,17 @@ body.index .header__link {
 
 .modal {
     background-color: #000;
-    position: relative;
+    position: fixed;
     visibility: hidden;
-    top: -999em;
-    left: -999em;
-    height: 0;
-    width: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     opacity: 0;
-    -webkit-transition: opacity 150ms;
-    -o-transition: opacity 150ms;
-    transition:opacity 150ms
+    z-index: 888;
+    -webkit-transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
 }
 
 .stories .modal, .story .modal {
@@ -454,64 +455,41 @@ body.index .header__link {
 }
 
 .modal .container {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-flex-wrap: wrap;
-    -moz-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    min-height: calc(100% - var(--headerHeight));
-    margin-top:var(--headerHeight)
+    display: block;
+    margin-top:var(--headerHeight);
+    padding-top: 2rem;
+    -webkit-transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.is-modal-open .modal .container {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media only screen and (max-width: 720px) {
     .is-modal-open .modal {
-        z-index: 888;
-        position: fixed;
         visibility: visible;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
         opacity: 1;
         overflow:auto
     }
 }
 
 .modal__items {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-flex-wrap: wrap;
-    -moz-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    text-align: center;
-    font-size: 3em;
+    text-align: left;
+    font-size: 1.5em;
     font-weight: 300;
-    width:100%
+    width:100%;
+    padding: 1rem 0;
+    -webkit-transition: opacity 300ms ease-in-out;
+    -o-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
 }
 
 .modal__item {
@@ -520,23 +498,19 @@ body.index .header__link {
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    justify-content: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    width:100%
+    width:100%;
+    padding: 0.5rem 0;
 }
 
 .modal__link {
@@ -719,6 +693,7 @@ body.job .main {
 
 .hero__main-text {
     font-style: normal;
+    margin-top: 7rem;
     font-weight: 300;
     font-size: 2.8181818182rem;
     line-height: 1;
@@ -2088,7 +2063,6 @@ body[data-hl="5"] ::-moz-selection {
   .section__title {
     position: absolute;
     left: 1rem; 
-    width: 30%;
   }
   
   .section__content {
@@ -2118,5 +2092,6 @@ body[data-hl="5"] ::-moz-selection {
 
     .section__content {
         padding-left: 0; /* Remove left padding */
+        margin-bottom: 5rem;
     }
 }
